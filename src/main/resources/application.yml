@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/customers-management
+    username: username
+    password: password
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.yml
+
+token:
+  signing:
+    key: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351
