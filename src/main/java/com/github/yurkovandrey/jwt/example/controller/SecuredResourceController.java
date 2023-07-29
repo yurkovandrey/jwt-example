@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/resource")
 @RequiredArgsConstructor
-public class UserController {
+public class SecuredResourceController {
   @GetMapping
   public ResponseEntity<String> hello() {
     return ResponseEntity.ok("hello!");

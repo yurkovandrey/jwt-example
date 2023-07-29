@@ -5,9 +5,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.github.yurkovandrey.jwt.example.dto.JwtAuthenticationResponse;
-import com.github.yurkovandrey.jwt.example.dto.SigninRequest;
-import com.github.yurkovandrey.jwt.example.dto.SignupRequest;
+import com.github.yurkovandrey.jwt.example.dto.response.JwtAuthenticationResponse;
+import com.github.yurkovandrey.jwt.example.dto.request.SigninRequest;
+import com.github.yurkovandrey.jwt.example.dto.request.SignupRequest;
 import com.github.yurkovandrey.jwt.example.model.UserModel;
 import com.github.yurkovandrey.jwt.example.repository.UserRepository;
 
@@ -22,10 +22,16 @@ public class AuthenticationService {
   private final AuthenticationManager authenticationManager;
 
   public JwtAuthenticationResponse signup(SignupRequest request) {
+    var email = request.getEmail();
+    var rawPassword = request.getPassword();
+
+    if (userRepository.findByEmail(email).isPresent()) {
+      throw new RuntimeException();
+    }
+
     var user = new UserModel();
-    user.setName(request.getFirstName());
-    user.setEmail(request.getEmail());
-    user.setPassword(passwordEncoder.encode(request.getPassword()));
+    user.setEmail(email);
+    user.setPassword(passwordEncoder.encode(rawPassword));
     userRepository.save(user);
     var jwt = jwtService.generateToken(user);
     return JwtAuthenticationResponse.builder().token(jwt).build();

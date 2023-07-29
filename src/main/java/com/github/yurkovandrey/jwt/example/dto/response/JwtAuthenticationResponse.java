@@ -1,4 +1,4 @@
-package com.github.yurkovandrey.jwt.example.dto;
+package com.github.yurkovandrey.jwt.example.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
