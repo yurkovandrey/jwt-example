@@ -1,4 +1,5 @@
 # Simple JWT Example
+![Tutorial terminal example](contrib/tutorial.webp)
 
 This project serves as a prime illustration of how to generate and verify JWT in Spring Boot applications seamlessly, eliminating the need for any external services such as IAM systems
 
