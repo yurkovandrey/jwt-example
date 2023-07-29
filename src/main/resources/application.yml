@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/customers-management
+    url: jdbc:postgresql://localhost:5432/jwt-example
     username: username
     password: password
   liquibase:
